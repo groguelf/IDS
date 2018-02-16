@@ -28,13 +28,15 @@ public class HelloClient implements Info_itf, Accounting_itf {
             HelloClient client = new HelloClient(args[1]);
             Info_itf c_stub = (Info_itf) UnicastRemoteObject.exportObject(client, 0);
 
-            Accounting_itf a_stub = (Accounting_itf) UnicastRemoteObject.exportObject(client, 0);
+            Accounting_itf a_stub = (Accounting_itf) UnicastRemoteObject.exportObject(new HelloClient(args[1]), 0);
 
             // Get remote object reference
             Registry reg = LocateRegistry.getRegistry(host);
             Hello h = (Hello) reg.lookup("HelloService");
 
             Hello2 h2 = (Hello2) reg.lookup("Hello2");
+            Registry_itf registre = (Registry_itf) reg.lookup("Registre");
+            registre.register(a_stub);
 
             // Remote method invocation
             for (int i = 0; i < 10; i++) {

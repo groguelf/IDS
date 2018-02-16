@@ -7,7 +7,12 @@ public class RegistryImpl implements Registry_itf {
     private HashMap<Accounting_itf, Integer> registre = new HashMap<Accounting_itf, Integer> ();
 
     public void register(Accounting_itf client) throws RemoteException {
-        registre.put(client, 0);
+        if (registre.containsKey(client)){
+            addACall(client);
+            client.numberOfCalls(numberCalls(client));
+        } else {
+            registre.put(client, 0);
+        }
     }
 
     public void addACall(Accounting_itf client) throws RemoteException {
