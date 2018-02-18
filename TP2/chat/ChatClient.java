@@ -1,6 +1,7 @@
 import java.rmi.*;
 import java.rmi.server.*;
 import java.rmi.registry.*;
+import java.util.Scanner;
 
 public class ChatClient implements Info_itf {
     private String name;
@@ -39,9 +40,15 @@ public class ChatClient implements Info_itf {
             System.out.println(connected);
 
             // Remote method invocation
-            w_stub.setMessage("yo!");
-            String res = w_stub.writeInChat(c_stub, true);
-            c_stub.display(res);
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println("Welcome to this channel.\nType a message anytime then press enter to send it.\nPress CTRL+C to leave.");
+
+            while (true) {
+                String mymessage = keyboard.nextLine();
+                w_stub.setMessage(mymessage);
+                String res = w_stub.writeInChat(c_stub, true);
+                c_stub.display(res);
+            }
 
         } catch (Exception e)  {
             System.err.println("Error on client: " + e);
