@@ -47,7 +47,8 @@ public class ChatClient implements Info_itf {
                 String mymessage = keyboard.nextLine();
                 w_stub.setMessage(mymessage);
                 String res = w_stub.writeInChat(c_stub, true);
-                c_stub.display(res);
+                registre.displayMessage(res, false);
+                // c_stub.display(res);
             }
 
         } catch (Exception e)  {
