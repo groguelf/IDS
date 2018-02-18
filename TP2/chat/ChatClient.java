@@ -58,6 +58,7 @@ public class ChatClient implements Info_itf {
 
         } catch (Exception e)  {
             System.err.println("Error on client: " + e);
+            e.printStackTrace();
         }
     }
 }
