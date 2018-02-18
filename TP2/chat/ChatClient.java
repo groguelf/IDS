@@ -36,12 +36,12 @@ public class ChatClient implements Info_itf {
             Info_itf c_stub = (Info_itf) UnicastRemoteObject.exportObject(client, 0);
             WriteClientImpl wClient = new WriteClientImpl(host);
             WriteClient w_stub = (WriteClient) UnicastRemoteObject.exportObject(wClient, 0);
-            String connected = registre.register(c_stub, w_stub);
-            System.out.println(connected);
 
             // Remote method invocation
+            String connected = registre.register(c_stub, w_stub);
+            System.out.println("Welcome to this channel!\nType a message anytime then press enter to send it.\nPress CTRL+C to leave.");
+
             Scanner keyboard = new Scanner(System.in);
-            System.out.println("Welcome to this channel.\nType a message anytime then press enter to send it.\nPress CTRL+C to leave.");
 
             while (true) {
                 String mymessage = keyboard.nextLine();
