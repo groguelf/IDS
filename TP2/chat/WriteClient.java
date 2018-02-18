@@ -9,5 +9,7 @@ public interface  WriteClient extends Remote {
 
 	public String writeInChat(Info_itf info, boolean displayName) throws RemoteException, IOException;
 
+	public String printHistory(Info_itf info) throws RemoteException, IOException;
+	
 	public void setMessage(String message) throws RemoteException;
 }

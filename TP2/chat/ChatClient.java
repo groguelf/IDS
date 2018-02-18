@@ -39,7 +39,7 @@ public class ChatClient implements Info_itf {
 
             // Remote method invocation
             String connected = registre.register(c_stub, w_stub);
-            System.out.println("Welcome to this channel!\nType a message anytime then press enter to send it.\nWrite /quit to leave.");
+            System.out.println("Welcome to this channel!\nType a message anytime then press enter to send it.\nType /quit to leave and /history to view the chat history.");
 
             Scanner keyboard = new Scanner(System.in);
 
@@ -48,6 +48,11 @@ public class ChatClient implements Info_itf {
                 if (mymessage.equals("/quit")) {
                     w_stub.disconnectMessage(c_stub);
                     System.out.println("You have been correctly disconnected, press CTRL-C to close the client.");
+                } else if (mymessage.equals("/history")) {
+                    String history = w_stub.printHistory(c_stub);
+                    System.out.println("===BEGINNING OF HISTORY===\n");
+                    System.out.println(history);
+                    System.out.println("===END OF HISTORY===\n");
                 } else {
                     w_stub.setMessage(mymessage);
                     String res = w_stub.writeInChat(c_stub, true);

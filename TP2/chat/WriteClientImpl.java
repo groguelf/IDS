@@ -3,6 +3,10 @@ import java.rmi.registry.*;
 // import java.nio.file.Files;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.lang.String;
 
 public class WriteClientImpl implements WriteClient {
 
@@ -32,7 +36,6 @@ public class WriteClientImpl implements WriteClient {
 		fw.close();
 		String message = info.getName() + " is now disconnected.";
 		registre.displayMessage(message, false);
-		return; // disconnect TODO
 	}
 
 	public String writeInChat(Info_itf info, boolean displayName) throws RemoteException, IOException {
@@ -44,6 +47,27 @@ public class WriteClientImpl implements WriteClient {
 		} else {
 			return message;
 		}
+	}
+
+	public String printHistory(Info_itf info) throws RemoteException, IOException, FileNotFoundException {
+		String history = "";
+		String line;
+
+		BufferedReader bufferReader = new BufferedReader(new FileReader("ChatHistory.txt"));
+		line = bufferReader.readLine();
+
+		while (line != null) {
+			history += line + "\n";
+			line = bufferReader.readLine();
+		}
+
+		bufferReader.close();
+
+		// history.concat(line);
+		// history.concat("bonjour");
+
+		// return line;
+		return history;
 	}
 
 	public void setMessage(String message) {
