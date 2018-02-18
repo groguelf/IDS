@@ -47,7 +47,8 @@ public class ChatClient implements Info_itf {
                 String mymessage = keyboard.nextLine();
                 if (mymessage.equals("/quit")) {
                     w_stub.disconnectMessage(c_stub);
-                    System.out.println("You have been correctly disconnected, press CTRL-C to close the client.");
+                    System.out.println("You have been correctly disconnected.");
+                    System.exit(0);
                 } else if (mymessage.equals("/history")) {
                     String history = w_stub.printHistory(c_stub);
                     System.out.println("===BEGINNING OF HISTORY===\n");
@@ -57,12 +58,12 @@ public class ChatClient implements Info_itf {
                     w_stub.setMessage(mymessage);
                     String res = w_stub.writeInChat(c_stub, true);
                     registre.displayMessage(res, false);
-                    // c_stub.display(res);
                 }
             }
 
         } catch (Exception e)  {
             System.err.println("Error on client: " + e);
+            e.printStackTrace();
         }
     }
 }

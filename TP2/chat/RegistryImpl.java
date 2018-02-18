@@ -5,7 +5,6 @@ import java.util.Map.*;
 import java.io.IOException;
 
 public class RegistryImpl implements Registry_itf {
-    //La HashMap est surement inutile et un HashSet serait mieux
     private HashMap<Info_itf, WriteClient> registre = new HashMap<Info_itf, WriteClient> ();
 
     public String register(Info_itf client, WriteClient wClient) throws RemoteException, IOException {
