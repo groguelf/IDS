@@ -1,14 +1,16 @@
 import java.rmi.*;
 import java.rmi.registry.*;
-// import java.nio.file.Files;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class WriteClientImpl implements WriteClient {
 
 	private String message;
+
 	private String filename;
+
 	private FileWriter fw;
+
 	private Registry_itf registre;
 
 	public WriteClientImpl(String host) throws RemoteException, NotBoundException, IOException {
@@ -48,9 +50,5 @@ public class WriteClientImpl implements WriteClient {
 
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	public void displayMessage(){
-
 	}
 }
