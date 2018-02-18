@@ -32,6 +32,7 @@ public class WriteClientImpl implements WriteClient {
 		fw.close();
 		String message = info.getName() + " is now disconnected.";
 		registre.displayMessage(message, false);
+		return; // disconnect TODO
 	}
 
 	public String writeInChat(Info_itf info, boolean displayName) throws RemoteException, IOException {

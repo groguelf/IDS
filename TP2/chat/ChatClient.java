@@ -39,16 +39,21 @@ public class ChatClient implements Info_itf {
 
             // Remote method invocation
             String connected = registre.register(c_stub, w_stub);
-            System.out.println("Welcome to this channel!\nType a message anytime then press enter to send it.\nPress CTRL+C to leave.");
+            System.out.println("Welcome to this channel!\nType a message anytime then press enter to send it.\nWrite /quit to leave.");
 
             Scanner keyboard = new Scanner(System.in);
 
             while (true) {
                 String mymessage = keyboard.nextLine();
-                w_stub.setMessage(mymessage);
-                String res = w_stub.writeInChat(c_stub, true);
-                registre.displayMessage(res, false);
-                // c_stub.display(res);
+                if (mymessage.equals("/quit")) {
+                    w_stub.disconnectMessage(c_stub);
+                    System.out.println("You have been correctly disconnected, press CTRL-C to close the client.");
+                } else {
+                    w_stub.setMessage(mymessage);
+                    String res = w_stub.writeInChat(c_stub, true);
+                    registre.displayMessage(res, false);
+                    // c_stub.display(res);
+                }
             }
 
         } catch (Exception e)  {
