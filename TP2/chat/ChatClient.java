@@ -48,6 +48,7 @@ public class ChatClient implements Info_itf {
                 if (mymessage.equals("/quit")) {
                     w_stub.disconnectMessage(c_stub);
                     System.out.println("You have been correctly disconnected.");
+                    registre.remove(c_stub);
                     System.exit(0);
                 } else if (mymessage.equals("/history")) {
                     String history = w_stub.printHistory(c_stub);

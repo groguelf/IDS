@@ -26,4 +26,8 @@ public class RegistryImpl implements Registry_itf {
             info.display(toDisplay);
         }
     }
+
+    public void remove(Info_itf info) throws RemoteException {
+        registre.remove(info);
+    }
 }
