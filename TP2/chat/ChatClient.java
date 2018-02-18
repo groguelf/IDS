@@ -2,7 +2,7 @@ import java.rmi.*;
 import java.rmi.server.*;
 import java.rmi.registry.*;
 
-public class HelloClient implements Info_itf, Accounting_itf {
+public class ChatClient implements Info_itf, Accounting_itf {
     private String name;
 
      public HelloClient(String s){

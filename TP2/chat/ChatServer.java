@@ -2,7 +2,7 @@ import java.rmi.*;
 import java.rmi.server.*; 
 import java.rmi.registry.*;
 
-public class HelloServer {
+public class ChatServer {
 
   public static void  main(String [] args) {
 	  try {

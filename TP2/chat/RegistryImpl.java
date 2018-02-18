@@ -4,14 +4,12 @@ import java.util.*;
 
 public class RegistryImpl implements Registry_itf {
 
-    private HashMap<Accounting_itf, Integer> registre = new HashMap<Accounting_itf, Integer> ();
+    private HashMap<Info_itf, Integer> registre = new HashMap<Accounting_itf, Integer> ();
 
-    public void register(Accounting_itf client) throws RemoteException {
-        if (registre.containsKey(client)){
-            addACall(client);
-            client.numberOfCalls(numberCalls(client));
-        } else {
+    public void register(Info_itf client) throws RemoteException {
+        if (!registre.containsKey(client)){
             registre.put(client, 0);
+
         }
     }
 
