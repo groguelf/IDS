@@ -8,5 +8,5 @@ public interface  WriteClient extends Remote {
 
 	public String writeInChat(Info_itf info) throws RemoteException;
 
-	public void setMessage(String message);
+	public void setMessage(String message) throws RemoteException;
 }
