@@ -13,6 +13,10 @@ public class ChatClient implements Info_itf {
         return name;
     }
 
+    public void display(String message) {
+        System.out.println(message);
+    }
+
     public static void main(String [] args) {
 
         try {
@@ -29,14 +33,15 @@ public class ChatClient implements Info_itf {
             Registry_itf registre = (Registry_itf) reg.lookup("Registre");
 
             Info_itf c_stub = (Info_itf) UnicastRemoteObject.exportObject(client, 0);
-            WriteClientImpl wClient = new WriteClientImpl();
+            WriteClientImpl wClient = new WriteClientImpl(host);
             WriteClient w_stub = (WriteClient) UnicastRemoteObject.exportObject(wClient, 0);
-            registre.register(c_stub, w_stub);
+            String connected = registre.register(c_stub, w_stub);
+            System.out.println(connected);
 
             // Remote method invocation
             w_stub.setMessage("yo!");
-            String res = w_stub.writeInChat(c_stub);
-            System.out.println(res);
+            String res = w_stub.writeInChat(c_stub, true);
+            c_stub.display(res);
 
         } catch (Exception e)  {
             System.err.println("Error on client: " + e);
