@@ -41,7 +41,7 @@ public class ChatClient implements Info_itf {
             // Remote method invocation
             w_stub.setMessage("yo!");
             String res = w_stub.writeInChat(c_stub, true);
-            c_stub.display(res);
+            registre.displayMessage(res, false);
 
         } catch (Exception e)  {
             System.err.println("Error on client: " + e);
